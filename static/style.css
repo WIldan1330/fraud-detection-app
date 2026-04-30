@@ -1,0 +1,362 @@
+/* ============================= */
+/* PALET WARNA */
+/* ============================= */
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-gold: #ffd700;
+  --color-light-gold: #ffea00;
+  --color-gray: #1a1a1a;
+  --color-dark-gray: #ccc;
+}
+
+/* ============================= */
+/* GENERAL */
+/* ============================= */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: var(--color-black);
+  color: var(--color-white);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+.navbar {
+  background: var(--color-gray);
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--color-gold);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--color-white);
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--color-gold);
+}
+
+/* ============================= */
+/* BUTTON */
+/* ============================= */
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-black);
+  padding: 15px 35px;
+  border: none;
+  border-radius: 5px;
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--color-light-gold);
+  transform: translateY(-3px);
+}
+
+/* ============================= */
+/* TITLES */
+/* ============================= */
+h1 {
+  font-size: 52px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+.hero-section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero-section p {
+  font-size: 19px;
+  max-width: 850px;
+  margin: auto;
+}
+
+/* ============================= */
+/* FEATURES */
+/* ============================= */
+.features-section,
+.how-to-use-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.features-grid,
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 40px;
+}
+
+.feature-card,
+.step-card {
+  background: var(--color-gray);
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.feature-card:hover,
+.step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.15);
+}
+
+.feature-card i {
+  font-size: 55px;
+  color: var(--color-gold);
+  margin-bottom: 25px;
+}
+
+/* ============================= */
+/* STEP NUMBER */
+/* ============================= */
+.step-card {
+  position: relative;
+  padding-top: 60px;
+}
+
+.step-number {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  color: var(--color-black);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 26px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+footer {
+  background: var(--color-gray);
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 80px;
+}
+
+/* ============================= */
+/* CHECK TRANSACTION PAGE */
+/* ============================= */
+.check-transaction-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.input-mode-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* ============================= */
+/* INPUT BOX */
+/* ============================= */
+.input-content {
+  background: var(--color-gray);
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 850px;
+  margin: auto;
+  box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+  text-align: left;
+}
+
+/* ============================= */
+/* FORM */
+/* ============================= */
+.manual-form,
+.csv-upload-form {
+  display: grid;
+  gap: 15px;
+}
+
+.manual-form label,
+.csv-upload-form label {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.manual-form input,
+.manual-form select,
+.csv-upload-form input[type="file"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--color-gold);
+  background: var(--color-gray);
+  color: var(--color-white);
+  font-size: 16px;
+}
+
+.manual-form input:focus,
+.manual-form select:focus {
+  outline: none;
+  border-color: var(--color-light-gold);
+}
+
+/* ============================= */
+/* FILE INPUT BUTTON */
+/* ============================= */
+.csv-upload-form input[type="file"]::-webkit-file-upload-button {
+  background: var(--color-gold);
+  color: var(--color-black);
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.csv-upload-form input[type="file"]::-webkit-file-upload-button:hover {
+  background: var(--color-light-gold);
+}
+
+/* ============================= */
+/* RESULT */
+/* ============================= */
+.results-section {
+  margin-top: 60px;
+  padding: 40px;
+  background: var(--color-gray);
+  border-radius: 8px;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-dark-gray);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.fraud {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.non-fraud {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* ============================= */
+/* STATUS MESSAGE */
+/* ============================= */
+#loadingMessage,
+#errorMessage {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#loadingMessage {
+  color: var(--color-gold);
+  background: #333300;
+  border: 1px solid var(--color-gold);
+}
+
+#errorMessage {
+  color: #ff6666;
+  background: #330000;
+  border: 1px solid #ff6666;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+@media (max-width:768px){
+
+  .navbar .container{
+    flex-direction: column;
+    gap:15px;
+  }
+
+  .navbar ul{
+    flex-direction: column;
+    align-items:center;
+    gap:10px;
+  }
+
+  h1{
+    font-size:32px;
+  }
+
+  h2{
+    font-size:26px;
+  }
+
+  .input-content{
+    padding:25px;
+  }
+
+  .btn-primary{
+    font-size:16px;
+    padding:10px 20px;
+  }
+
+}
