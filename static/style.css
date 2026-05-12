@@ -461,3 +461,53 @@ footer {
   }
 
 }
+
+@media (max-width:768px){
+
+  .navbar .container{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo{
+    font-size: 22px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .navbar ul{
+    flex-direction: row;
+    gap: 16px;
+    width: auto;
+  }
+
+  .navbar a{
+    font-size: 14px;
+  }
+
+  .check-transaction-section{
+    padding-top: 80px;
+  }
+
+  .input-mode-tabs,
+  .input-content,
+  .results-section{
+    max-width: 356px;
+    width: 100%;
+  }
+
+  .input-content{
+    padding: 32px 18px;
+  }
+
+  h1{
+    font-size: 29px;
+    white-space: nowrap;
+  }
+
+  h2{
+    font-size: 25px;
+  }
+
+}
