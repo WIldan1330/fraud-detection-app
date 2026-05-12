@@ -13,15 +13,21 @@
 /* ============================= */
 /* GENERAL */
 /* ============================= */
+*{
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   background: var(--color-black);
   color: var(--color-white);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: auto;
   padding: 0 20px;
@@ -83,6 +89,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  width: 100%;
 }
 
 .btn-primary:hover {
@@ -204,6 +211,7 @@ footer {
   justify-content: center;
   gap: 15px;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
 /* ============================= */
@@ -214,6 +222,7 @@ footer {
   padding: 40px;
   border-radius: 8px;
   max-width: 850px;
+  width: 100%;
   margin: auto;
   box-shadow: 0 5px 15px rgba(255,255,255,0.1);
   text-align: left;
@@ -226,6 +235,7 @@ footer {
 .csv-upload-form {
   display: grid;
   gap: 15px;
+  width: 100%;
 }
 
 .manual-form label,
@@ -237,7 +247,8 @@ footer {
 .manual-form input,
 .manual-form select,
 .csv-upload-form input[type="file"] {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   border-radius: 5px;
   border: 1px solid var(--color-gold);
   background: var(--color-gray);
@@ -254,13 +265,18 @@ footer {
 /* ============================= */
 /* FILE INPUT BUTTON */
 /* ============================= */
+.csv-upload-form input[type="file"] {
+  overflow: hidden;
+}
+
 .csv-upload-form input[type="file"]::-webkit-file-upload-button {
   background: var(--color-gold);
   color: var(--color-black);
-  padding: 8px 15px;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .csv-upload-form input[type="file"]::-webkit-file-upload-button:hover {
@@ -276,6 +292,7 @@ footer {
   background: var(--color-gray);
   border-radius: 8px;
   max-width: 850px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -285,6 +302,7 @@ footer {
   justify-content: space-between;
   padding: 18px 0;
   border-bottom: 1px solid var(--color-dark-gray);
+  gap: 10px;
 }
 
 .result-item:last-child {
@@ -351,12 +369,22 @@ footer {
   }
 
   .input-content{
-    padding:25px;
+    padding:20px;
+    margin: 0 10px;
   }
 
   .btn-primary{
     font-size:16px;
-    padding:10px 20px;
+    padding:12px 20px;
+  }
+
+  .csv-upload-form input[type="file"]{
+    font-size:14px;
+  }
+
+  .result-item{
+    flex-direction: column;
+    align-items: flex-start;
   }
 
 }
