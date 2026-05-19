@@ -114,7 +114,7 @@ def adjust_risk(prob, amount):
     elif amount >= 10_000_000:
         base = 0.45
     else:
-        base = None
+        base = np.random.uniform(0.01, 0.20)
 
     if base is not None:
         noise = np.random.uniform(-0.07, 0.07)
@@ -171,35 +171,55 @@ def predict_raw_csv():
         return jsonify({"error": "Upload CSV"}), 400
 
     try:
+        print("=== MASUK ENDPOINT RAW CSV ===")
+
         df = pd.read_csv(request.files["file"])
+        print("Kolom CSV:", df.columns.tolist())
+        print(df.head())
 
         if "Amount" not in df.columns or "Time" not in df.columns:
             return jsonify({"error": "Butuh kolom Amount & Time"}), 400
 
-        KURS = 15000
-        df["Amount"] = df["Amount"] / KURS
+        # Simpan nominal asli sebagai Rupiah
+        df["Amount_IDR"] = df["Amount"].apply(sanitize_number)
 
+        # Amount untuk model disesuaikan ke skala dataset Kaggle
+        KURS = 15000
+        df["Amount"] = df["Amount_IDR"] / KURS
+        df["Time"] = df["Time"].apply(sanitize_number)
+
+        # Scaling Amount dan Time
         scaled = scaler.transform(df[["Amount", "Time"]])
         df["scaled_Amount"] = scaled[:, 0]
         df["scaled_Time"] = scaled[:, 1]
 
-        df["Amount_IDR"] = df["Amount"] * KURS
-
+        # Isi kolom yang tidak ada
         for col in feature_columns:
             if col not in df.columns:
                 df[col] = 0
 
         df_final = df[feature_columns]
+
         probs = model.predict_proba(df_final)[:, 1]
 
+        print("Sebelum adjust:", probs)
+
         for i in range(len(df)):
-            probs[i] = adjust_risk(probs[i], df["Amount_IDR"].iloc[i])
+            before = probs[i]
+            amount_idr = df["Amount_IDR"].iloc[i]
+            probs[i] = adjust_risk(probs[i], amount_idr)
+
+            print(
+                f"Row {i+1} | Amount_IDR={amount_idr} | "
+                f"Before={before} | After={probs[i]}"
+            )
 
         results = []
         id_col = choose_id_column(df)
 
         for i in range(len(df)):
-            tx_id = df[id_col].iloc[i] if id_col else i
+            tx_id = df[id_col].iloc[i] if id_col else i + 1
+
             results.append({
                 "transaction_id": int(tx_id),
                 "amount": float(df["Amount_IDR"].iloc[i]),
